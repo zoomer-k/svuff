@@ -1,5 +1,7 @@
 id: hello
 
-valid: // hello
+valid: 
+  - // hello
 
-invalid: // Hi
+invalid: 
+  - // Hi
