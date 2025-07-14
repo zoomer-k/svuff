@@ -3,6 +3,6 @@ testConfigs:
   - testDir: dev_tests
 customLanguages:
   systemverilog:
-    libraryPath: systemverilog.so
+    libraryPath: tree-sitter-systemverilog/systemverilog.so
     extensions: [sv, v]
     expandoChar: _
