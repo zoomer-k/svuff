@@ -5,3 +5,4 @@ valid:
 
 invalid: 
   - // Hello
+  - //  Hello
