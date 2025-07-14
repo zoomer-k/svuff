@@ -84,3 +84,9 @@ jobs:
       - name: ls
         working-directory: tree-sitter-systemverilog
         run: ls
+
+      - name: setup ast-grep
+        run: npm install --global @ast-grep/cli
+
+      - name: test rules
+        run: sg test --skip-snapshot-tests
