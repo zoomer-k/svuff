@@ -1,2 +1,2 @@
 # svuff
-systemverilog linter form many guidelines
+systemverilog linter from many guidelines
