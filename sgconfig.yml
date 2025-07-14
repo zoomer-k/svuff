@@ -1,1 +1,8 @@
-
+ruleDirs: ["./dev_rules"]
+testConfigs:
+  - testDir: dev_tests
+customLanguages:
+  verilog:
+    libraryPath: verilog.so
+    extensions: [sv, v]
+    expandoChar: _
