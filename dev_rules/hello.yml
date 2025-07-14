@@ -4,4 +4,4 @@ severity:  error
 language: systemverilog
 rule:
   kind: comment
-  regex: "hello"
+  regex: ".*hello.*"
