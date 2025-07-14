@@ -76,7 +76,7 @@ jobs:
         #run: tree-sitter test
         #run:  tree-sitter generate -b --abi 14 --libdir .
         run: |
-          if [ ! -d systemverilog.so ]; then
+          if [ ! -f systemverilog.so ]; then
             tree-sitter generate -b --abi 14 --libdir .
           fi
 
