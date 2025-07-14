@@ -1,5 +1,5 @@
 id: hello
 
-valid: // hello
+valid: ["// Hi"]
 
-invalid: // Hi
+invalid: ["// hello"]
