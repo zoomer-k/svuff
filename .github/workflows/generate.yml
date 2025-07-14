@@ -56,7 +56,7 @@ jobs:
       - name: build dll
         working-directory: tree-sitter-systemverilog
         #run: tree-sitter test
-        run:  tree-sitter generate -b -abi 14 --libdir .
+        run:  tree-sitter generate -b --abi 14 --libdir .
 
       - name: ls
         working-directory: tree-sitter-systemverilog
