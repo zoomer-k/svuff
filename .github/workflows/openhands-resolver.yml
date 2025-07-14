@@ -282,7 +282,9 @@ jobs:
           retention-days: 30 # Keep the artifact for 30 days
 
       - name: Create draft PR or push branch
-        if: always() # Create PR or branch even if the previous steps fail
+        #if: always() # Create PR or branch even if the previous steps fail
+        if: steps.check_result.outputs.RESOLUTION_SUCCESS == 'true' && success()
+
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || github.token }}
           GITHUB_USERNAME: ${{ secrets.PAT_USERNAME || 'openhands-agent' }}
