@@ -32,7 +32,7 @@ jobs:
         run: ls
 
       - name: submodule
-        run: git submodule add https://github.com/gmlarumbe/tree-sitter-systemverilog
+        run: git submodule --depth=1 add https://github.com/gmlarumbe/tree-sitter-systemverilog
 
       - name: Cache tree-sitter-systemverilog
         uses: actions/cache@v4
