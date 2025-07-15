@@ -1,5 +1,5 @@
 # "lowRISC Style Guides" by lowRISC Contributors is licensed under CC BY 4.0. This work has been modified.
-id: lowRISC_begin_end
+id: "lowRISC_begin_end"
 message: Use begin and end unless the whole statement fits on a single line.
 severity:  error
 language: systemverilog
@@ -16,6 +16,19 @@ rule:
         kind: block
         pattern: begin $BODY$ end
 
+
+
+
 note: |
   If a statement wraps at a block boundary, it must use begin and end. 
   Only if a whole semicolon-terminated statement fits on a single line can begin and end be omitted.
+
+
+test:
+  - code: |
+      always_ff @(posedge clk)
+        q <= d;
+    errors:
+      - message: "Use begin and end unless the whole statement fits on a single line."
+
+
