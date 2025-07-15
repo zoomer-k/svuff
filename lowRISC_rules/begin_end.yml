@@ -4,7 +4,8 @@ message: Use begin and end unless the whole statement fits on a single line.
 severity:  error
 language: systemverilog
 rule:
-  kind: comment
+  kind: regex
+  regex: "always_ff @\\(.*\\)\\s*\\n\\s*[^;]*\\n.*"
 note: |
   If a statement wraps at a block boundary, it must use begin and end. 
   Only if a whole semicolon-terminated statement fits on a single line can begin and end be omitted.
