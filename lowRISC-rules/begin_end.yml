@@ -1,1 +1,7 @@
+# "lowRISC Style Guides" by lowRISC Contributors is licensed under CC BY 4.0. This work has been modified.
 
+id: lowRISC_begin_end
+message: hello
+severity:  error
+language: systemverilog
+rule:
