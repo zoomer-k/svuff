@@ -1,4 +1,4 @@
-ruleDirs: ["./dev_rules"]
+ruleDirs: dev_rules
 testConfigs:
   - testDir: dev_tests
 customLanguages:
