@@ -1,0 +1,12 @@
+id: lowRISC_begin_end
+
+valid: 
+  - |
+    always_ff @(posedge clk) begin
+    q <= d;
+    end
+
+invalid: 
+  - |
+    always_ff @(posedge clk)
+    q <= d;
