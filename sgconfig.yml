@@ -1,6 +1,8 @@
-ruleDirs: dev_rules
+ruleDirs: 
+  - dev_rules
 testConfigs:
-  - testDir: dev_tests
+  - testDir: 
+      -  dev_tests
 customLanguages:
   systemverilog:
     libraryPath: tree-sitter-systemverilog/systemverilog.so
