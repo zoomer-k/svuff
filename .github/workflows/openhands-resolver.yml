@@ -92,38 +92,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: clone tree-sitter-systemverilog
-        run: git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog
-
-      - name: cache tree-sitter-systemverilog
-        uses: actions/cache@v4
-        with:
-          path: |
-            tree-sitter-systemverilog
-            .git/modules/tree-sitter-systemverilog
-            tree-sitter-systemverilog/build
-            tree-sitter-systemverilog/systemverilog.so
-          key: ${{ runner.os }}-tree-sitter-systemverilog-${{ hashFiles('tree-sitter-systemverilog/**') }}
-          restore-keys: |
-            ${{ runner.os }}-tree-sitter-systemverilog-
-
-      - name: setup tree-sitter
-        uses: tree-sitter/setup-action@v2
-
-      - name: build dll
-        working-directory: tree-sitter-systemverilog
-        #run: tree-sitter test
-        #run:  tree-sitter generate -b --abi 14 --libdir .
-        run: |
-          if [ ! -f systemverilog.so ]; then
-            tree-sitter generate -b --abi 14 --libdir .
-          fi
-
-      - name: setup ast-grep
-        run: npm install --global @ast-grep/cli
-      
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
