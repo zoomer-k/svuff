@@ -1,20 +1,25 @@
 
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    tree-sitter-cli \
-    ast-grep \
-    git \
-    python3 \
-    python3-pip
 
-WORKDIR /app
+# 必要なパッケージのインストール
+RUN apt-get update && \
+    apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustc cargo nodejs npm
 
+# Tree-sitter CLI のインストール
+RUN cargo install tree-sitter-cli
+
+# ast-grep CLI のインストール
+RUN npm install --global @ast-grep/cli
+
+# 作業ディレクトリの設定
+WORKDIR /workspace
+
+# ホスト側のファイルをすべてコピー
 COPY . .
 
-# Install project dependencies (example, adjust as needed)
-# RUN pip install -r requirements.txt  # If you have a requirements.txt file
-# Example:
-# RUN pip install flask
+# tree-sitter-systemverilog をクローンしてビルド
+RUN git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog && \
+    cd tree-sitter-systemverilog && \
+    tree-sitter generate -b --abi 14 --libdir .
 
-CMD ["bash"] # Or your application's entrypoint
