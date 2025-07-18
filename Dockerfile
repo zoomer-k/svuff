@@ -7,7 +7,7 @@ RUN apt-get update && \
 
 
 # Tree-sitter CLI のインストール（エラー回避のためオプション追加）
-RUN cargo install tree-sitter-cli --legacy-peer-deps
+RUN cargo install tree-sitter-cli
 
 # ast-grep CLI のインストール
 RUN npm install --global @ast-grep/cli
