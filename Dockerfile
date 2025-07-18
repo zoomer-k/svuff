@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM rust:latest
 
 # 必要なパッケージのインストール
 RUN apt-get update && \
