@@ -1,13 +1,12 @@
-
 FROM ubuntu:latest
-
 
 # 必要なパッケージのインストール
 RUN apt-get update && \
-    apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustc cargo nodejs npm
+    apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustc cargo nodejs npm && \
+    npm cache clean --force
 
-# Tree-sitter CLI のインストール
-RUN npm install tree-sitter-cli
+# Tree-sitter CLI のインストール（エラー回避のためオプション追加）
+RUN npm install tree-sitter-cli --legacy-peer-deps
 
 # ast-grep CLI のインストール
 RUN npm install --global @ast-grep/cli
@@ -22,4 +21,3 @@ COPY . .
 RUN git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog && \
     cd tree-sitter-systemverilog && \
     tree-sitter generate -b --abi 14 --libdir .
-
