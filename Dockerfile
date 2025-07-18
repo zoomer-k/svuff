@@ -2,9 +2,8 @@ FROM rust:latest
 
 # 必要なパッケージのインストール
 RUN apt-get update && \
-    apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustup nodejs npm 
+    apt-get install -y curl git build-essential libtool autoconf automake pkg-config nodejs npm 
 
-RUN rustup update stable
 
 
 # Tree-sitter CLI のインストール（エラー回避のためオプション追加）
