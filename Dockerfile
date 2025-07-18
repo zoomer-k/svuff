@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustc cargo nodejs npm
 
 # Tree-sitter CLI のインストール
-RUN cargo install tree-sitter-cli
+RUN npm install tree-sitter-cli
 
 # ast-grep CLI のインストール
 RUN npm install --global @ast-grep/cli
