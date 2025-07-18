@@ -2,11 +2,13 @@ FROM ubuntu:latest
 
 # 必要なパッケージのインストール
 RUN apt-get update && \
-    apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustc cargo nodejs npm && \
-    npm cache clean --force
+    apt-get install -y curl git build-essential libtool autoconf automake pkg-config rustup nodejs npm 
+
+RUN rustup update stable
+
 
 # Tree-sitter CLI のインストール（エラー回避のためオプション追加）
-RUN npm install tree-sitter-cli --legacy-peer-deps
+RUN cargo install tree-sitter-cli --legacy-peer-deps
 
 # ast-grep CLI のインストール
 RUN npm install --global @ast-grep/cli
