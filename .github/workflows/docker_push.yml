@@ -36,11 +36,19 @@ jobs:
           load: true
           tags: ${{ env.TEST_TAG }}
 
+      # - name: Test
+      #   run: |
+      #     docker run --rm ${{ env.TEST_TAG }} \
+      #     ls \
+      #     sg test --skip-snapshot-tests
+          
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }} \
-          ls \
-          sg test --skip-snapshot-tests
+          docker run --rm ${{ env.TEST_TAG }} sh -c '
+            ls
+            sg test --skip-snapshot-tests
+          '
+
 
           
       # - name: Build and Push
