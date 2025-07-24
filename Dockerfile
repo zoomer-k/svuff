@@ -1,4 +1,5 @@
-FROM rust:latest
+#FROM rust:latest
+FROM node:latest
 
 # 必要なパッケージのインストール
 RUN apt-get update && \
@@ -7,7 +8,8 @@ RUN apt-get update && \
 
 
 # Tree-sitter CLI のインストール（エラー回避のためオプション追加）
-RUN cargo install tree-sitter-cli
+#RUN cargo install tree-sitter-cli
+RUN npm install --global tree-sitter-cli
 
 # ast-grep CLI のインストール
 RUN npm install --global @ast-grep/cli
