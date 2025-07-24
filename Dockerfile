@@ -2,6 +2,14 @@
 # FROM node:latest
 FROM node:24-slim
 
+
+# install dependency
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    git curl bash build-essential python3 && \
+    rm -rf /var/lib/apt/lists/*
+
+
 # 必要なパッケージのインストール
 # RUN apt-get update && \
 #     apt-get install -y curl git build-essential libtool autoconf automake pkg-config nodejs npm 
