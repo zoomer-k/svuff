@@ -2,8 +2,8 @@
 FROM node:latest
 
 # 必要なパッケージのインストール
-RUN apt-get update && \
-    apt-get install -y curl git build-essential libtool autoconf automake pkg-config nodejs npm 
+# RUN apt-get update && \
+#     apt-get install -y curl git build-essential libtool autoconf automake pkg-config nodejs npm 
 
 
 
