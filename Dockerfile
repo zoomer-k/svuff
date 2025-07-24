@@ -1,13 +1,13 @@
 
-# FROM node:latest
-FROM node:24-slim
+FROM node:latest
+# FROM node:24-slim
 
 
-# install dependency
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    git curl bash build-essential python3 && \
-    rm -rf /var/lib/apt/lists/*
+# # install dependency
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends \
+#     git curl bash build-essential python3 && \
+#     rm -rf /var/lib/apt/lists/*
 
 
 # 必要なパッケージのインストール
