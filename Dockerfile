@@ -7,12 +7,16 @@ FROM node:latest
 
 
 
-# Tree-sitter CLI のインストール（エラー回避のためオプション追加）
-#RUN cargo install tree-sitter-cli
-RUN npm install --global tree-sitter-cli
+# # Tree-sitter CLI のインストール（エラー回避のためオプション追加）
+# #RUN cargo install tree-sitter-cli
+# RUN npm install --global tree-sitter-cli
 
-# ast-grep CLI のインストール
-RUN npm install --global @ast-grep/cli
+# # ast-grep CLI のインストール
+# RUN npm install --global @ast-grep/cli
+
+# install ast-grep CLI & tree-sitter-cli
+RUN npm install --global tree-sitter-cli @ast-grep/cli
+
 
 # 作業ディレクトリの設定
 WORKDIR /workspace
