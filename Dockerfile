@@ -1,6 +1,6 @@
 
 #FROM node:latest
-FROM python-nodejs:python3.12-nodejs22
+FROM nikolaik/python-nodejs:python3.12-nodejs22
 
 
 
