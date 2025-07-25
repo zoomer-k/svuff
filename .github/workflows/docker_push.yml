@@ -38,9 +38,12 @@ jobs:
 
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }} \
-          ls \
-          sg test --skip-snapshot-tests
+          docker run --rm ${{ env.TEST_TAG }} sh -c '
+            tree-sitter init-config
+            cat /root/.config/tree-sitter/config.json
+            ls
+            sg test --skip-snapshot-tests -f hello
+          '
 
       - name: Build and export
         uses: docker/build-push-action@v6
