@@ -24,6 +24,9 @@ WORKDIR /workspace
 # ホスト側のファイルをすべてコピー
 COPY . .
 
+# create config file 
+RUN tree-sitter init-config
+
 # tree-sitter-systemverilog をクローンしてビルド
 RUN git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog && \
     cd tree-sitter-systemverilog && \
