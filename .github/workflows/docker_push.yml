@@ -36,26 +36,48 @@ jobs:
           load: true
           tags: ${{ env.TEST_TAG }}
 
-      # - name: Test
-      #   run: |
-      #     docker run --rm ${{ env.TEST_TAG }} \
-      #     ls \
-      #     sg test --skip-snapshot-tests
+      - name: Test
+        run: |
+          docker run --rm ${{ env.TEST_TAG }} \
+          ls \
+          sg test --skip-snapshot-tests
+
+      - name: Build and export
+        uses: docker/build-push-action@v6
+        with:
+          tags: myimage:latest
+          outputs: type=docker,dest=${{ runner.temp }}/myimage.tar
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: myimage
+          path: ${{ runner.temp }}/myimage.tar
+
+
+          
   test_docker_image:
     needs: publish_docker_image
     runs-on: ubuntu-latest 
     steps:
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+      # - name: Login to GitHub Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ${{ env.REGISTRY }}
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          name: myimage
+          path: ${{ runner.temp }}
           
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }} sh -c '
+          docker --input ${{ runner.temp }}/myimage.tar
+          docker image ls -a
+          docker run --rm myimage:latest sh -c '
             tree-sitter init-config
             cat /root/.config/tree-sitter/config.json
             ls
