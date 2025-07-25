@@ -45,6 +45,7 @@ jobs:
       - name: Test
         run: |
           docker run --rm ${{ env.TEST_TAG }} sh -c '
+            tree-sitter init-config
             ls
             sg test --skip-snapshot-tests -f hello
           '
