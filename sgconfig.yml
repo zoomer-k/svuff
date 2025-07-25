@@ -6,7 +6,6 @@ testConfigs:
   -  testDir: lowRISC_tests
 customLanguages:
   systemverilog:
-    libraryPath: 
-      - tree-sitter-systemverilog/systemverilog.so
+    libraryPath: tree-sitter-systemverilog/systemverilog.so
     extensions: [sv, v]
     expandoChar: _
