@@ -1,7 +1,6 @@
 ---
-description:
-globs:
-alwaysApply: false
+name: repo
+type: repo
 ---
 
 # use ast-grep to search code
