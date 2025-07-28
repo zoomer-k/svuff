@@ -50,6 +50,7 @@ jobs:
             echo "HOME=$HOME"
             ls -l $HOME/tree-sitter-systemverilog
             [ -f $HOME/tree-sitter-systemverilog/systemverilog.so ] && echo "Found systemverilog.so" || echo "Not found"
+            ldd /root/tree-sitter-systemverilog/systemverilog.so
             ls
             sg test --skip-snapshot-tests -f hello
           '
