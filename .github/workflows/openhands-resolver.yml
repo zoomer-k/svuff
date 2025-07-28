@@ -98,7 +98,7 @@ jobs:
         with:
           load: true
           # tags: ${{ env.TEST_TAG }}
-          tags: ${{ input.base_container_image }}
+          tags: ${{ inputs.base_container_image }}
           
       - name: Set up Python
         uses: actions/setup-python@v5
