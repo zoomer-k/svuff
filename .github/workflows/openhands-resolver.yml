@@ -99,6 +99,15 @@ jobs:
           load: true
           # tags: ${{ env.TEST_TAG }}
           tags: ${{ inputs.base_container_image }}
+      - name: image Test
+       # docker run --rm ${{ env.TEST_TAG }} sh -c '
+        run: |
+          docker run --rm ${{ inputs.base_container_image }} sh -c '
+            tree-sitter init-config
+            cat /root/.config/tree-sitter/config.json
+            ls
+            sg test --skip-snapshot-tests -f hello
+          '
           
       - name: Set up Python
         uses: actions/setup-python@v5
