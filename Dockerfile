@@ -23,5 +23,5 @@ RUN tree-sitter init-config
 
 # tree-sitter-systemverilog をクローンしてビルド
 RUN git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog $HOME/tree-sitter && \
-    cd $HOME/tree-sitter/tree-sitter-systemverilog && \
+    cd $HOME/tree-sitter/ && \
     tree-sitter generate -b --abi 14 --libdir .
