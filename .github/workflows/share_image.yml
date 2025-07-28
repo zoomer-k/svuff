@@ -43,7 +43,7 @@ jobs:
           docker image ls -a
           docker run --rm myimage:latest sh -c '
             tree-sitter init-config
-            ls $HOME
+            ls $HOME/tree-sitter-systemverilog
             cat /root/.config/tree-sitter/config.json
             ls
             sg test --skip-snapshot-tests -f hello
