@@ -37,6 +37,8 @@ jobs:
       #     docker load --input ${{ runner.temp }}/myimage.tar
       #     docker image ls -a
 
+
+
       - name: Test
         run: |
           docker load --input ${{ runner.temp }}/myimage.tar
@@ -45,6 +47,9 @@ jobs:
             tree-sitter init-config
             ls $HOME/tree-sitter-systemverilog
             cat /root/.config/tree-sitter/config.json
+            echo "HOME=$HOME"
+            ls -l $HOME/tree-sitter-systemverilog
+            [ -f $HOME/tree-sitter-systemverilog/systemverilog.so ] && echo "Found systemverilog.so" || echo "Not found"
             ls
             sg test --skip-snapshot-tests -f hello
           '
