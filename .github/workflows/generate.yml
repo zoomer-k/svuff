@@ -75,11 +75,11 @@ jobs:
       - name: build dll
         working-directory: $HOME/tree-sitter-systemverilog
         #run: tree-sitter test
-        #run:  tree-sitter generate -b --abi 14 --libdir .
-        run: |
-          if [ ! -f systemverilog.so ]; then
-            tree-sitter generate -b --abi 14 --libdir .
-          fi
+        run:  tree-sitter generate -b --abi 14 --libdir .
+        # run: |
+        #   if [ ! -f systemverilog.so ]; then
+        #     tree-sitter generate -b --abi 14 --libdir .
+        #   fi
 
       - name: ls
         working-directory: tree-sitter-systemverilog
