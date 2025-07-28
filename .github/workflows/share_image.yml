@@ -45,12 +45,9 @@ jobs:
           docker image ls -a
           docker run --rm myimage:latest sh -c '
             tree-sitter init-config
-            ls $HOME/tree-sitter-systemverilog
+            ls /tmp/tree-sitter-systemverilog
             cat /root/.config/tree-sitter/config.json
-            echo "HOME=$HOME"
-            ls -l $HOME/tree-sitter-systemverilog
-            [ -f $HOME/tree-sitter-systemverilog/systemverilog.so ] && echo "Found systemverilog.so" || echo "Not found"
-            ldd /root/tree-sitter-systemverilog/systemverilog.so
+            ldd /tmp/tree-sitter-systemverilog/systemverilog.so
             ls
             sg test --skip-snapshot-tests -f hello
           '
