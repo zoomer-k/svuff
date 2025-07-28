@@ -32,7 +32,7 @@ on:
       base_container_image:
         required: false
         type: string
-        default: ""
+        default: "base_image"
         description: "Custom sandbox env"
       runner:
         required: false
@@ -92,6 +92,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v6
+        with:
+          load: true
+          # tags: ${{ env.TEST_TAG }}
+          tags: ${{ input.base_container_image }}
+          
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
