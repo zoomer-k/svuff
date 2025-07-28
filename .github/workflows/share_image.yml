@@ -36,3 +36,14 @@ jobs:
         run: |
           docker load --input ${{ runner.temp }}/myimage.tar
           docker image ls -a
+
+      - name: Test
+        run: |
+          docker --input ${{ runner.temp }}/myimage.tar
+          docker image ls -a
+          docker run --rm myimage:latest sh -c '
+            tree-sitter init-config
+            cat /root/.config/tree-sitter/config.json
+            ls
+            sg test --skip-snapshot-tests -f hello
+          '
