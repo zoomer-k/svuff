@@ -85,6 +85,7 @@ jobs:
       )
     runs-on: "${{ inputs.runner || 'ubuntu-latest' }}"
     env:
+      TEST_TAG: ${{ github.repository }}:test
       LLM_NUM_RETRIES: 13
       LLM_RETRY_MIN_WAIT: 60
       LLM_RETRY_MAX_WAIT: 3000
@@ -97,12 +98,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           load: true
-          # tags: ${{ env.TEST_TAG }}
-          tags: ${{ inputs.base_container_image }}
+          tags: ${{ env.TEST_TAG }}
+          # tags: ${{ inputs.base_container_image }}
       - name: image Test
-       # docker run --rm ${{ env.TEST_TAG }} sh -c '
         run: |
-          docker run --rm ${{ inputs.base_container_image }} sh -c '
+          docker run --rm ${{ env.TEST_TAG }} sh -c '
             tree-sitter init-config
             cat /root/.config/tree-sitter/config.json
             ls
@@ -207,7 +207,7 @@ jobs:
 
           echo "MAX_ITERATIONS=${{ inputs.max_iterations || 50 }}" >> $GITHUB_ENV
           echo "SANDBOX_ENV_GITHUB_TOKEN=${{ secrets.PAT_TOKEN || github.token }}" >> $GITHUB_ENV
-          echo "SANDBOX_BASE_CONTAINER_IMAGE=${{ inputs.base_container_image }}" >> $GITHUB_ENV
+          echo "SANDBOX_BASE_CONTAINER_IMAGE=${{ env.TEST_TAG }}" >> $GITHUB_ENV
 
           # Set branch variables
           echo "TARGET_BRANCH=${{ inputs.target_branch || 'main' }}" >> $GITHUB_ENV
