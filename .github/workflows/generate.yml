@@ -33,7 +33,7 @@ jobs:
 
       - name: submodule
         #run: git submodule --depth=1 add https://github.com/gmlarumbe/tree-sitter-systemverilog
-        run: git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog $HOME/tree-sitter-systemverilog
+        run: git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog /tmp/tree-sitter-systemverilog
          
       - name: Cache tree-sitter-systemverilog
         uses: actions/cache@v4
@@ -61,7 +61,7 @@ jobs:
         run: git status
 
       - name: cd submodule
-        run: cd $HOME/tree-sitter-systemverilog
+        run: cd /tmp/tree-sitter-systemverilog
       
       - name: ls
         run: ls
@@ -74,7 +74,7 @@ jobs:
 
       - name: build dll
         # working-directory: $HOME/tree-sitter-systemverilog
-        working-directory: tree-sitter-systemverilog
+        working-directory: /tmp/tree-sitter-systemverilog
         #run: tree-sitter test
         run:  tree-sitter generate -b --abi 14 --libdir .
         # run: |
