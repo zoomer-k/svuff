@@ -272,6 +272,16 @@ Metavariables starting with an underscore (`_`) are not captured. They can match
 *   **Non-working**: `obj.on$EVENT`, `"Hello $WORLD"`, `a $OP b`, `$jq`.
 
 The ast-grep playground is useful for debugging patterns and visualizing metavariables.
+
+## parse AST
+ast-grep can parse code to AST
+
+```
+ast-grep run --pattern <pattern> --lang systemverilog --debug-query=cst
+```
+
+
+
 ## GitHub Actions Setup
 
 This project uses GitHub Actions for CI/CD. The workflow file is located at `.github/workflows/generate.yml`.
