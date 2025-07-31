@@ -83,7 +83,7 @@ jobs:
           fi
 
       - name: ls
-        working-directory: tree-sitter-systemverilog
+        working-directory: /tmp/tree-sitter-systemverilog
         run: ls
 
       - name: setup ast-grep
