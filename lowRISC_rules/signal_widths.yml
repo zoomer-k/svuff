@@ -4,7 +4,7 @@ message: Always be explicit about the widths of number literals.
 severity:  error
 language: systemverilog
 rule:
-     kind: procedural_timing_control_statement
+     kind: integral_number
 note: |
   Exceptions:
   When using parameterized widths, it is acceptable to simply use 1'b1 (e.g. when incrementing) rather than contrivances such as {{(Bus_width-1){1'b0}}, 1'b1}. Alternately it could be written as Bus_width'(1).
