@@ -1,0 +1,11 @@
+id: lowRISC_signal_widths
+
+valid: 
+  - |
+    localparam logic [3:0] bar = 4'd4;
+    assign foo = 8'd2;
+
+invalid: 
+  - |
+    localparam logic [3:0] bar = 4;
+    assign foo = 2;
