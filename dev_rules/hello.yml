@@ -3,5 +3,5 @@ message: hello
 severity:  error
 language: systemverilog
 rule:
-  kind: comment
+  kind: one_line_comment
   regex: "//\\s*Hello"
