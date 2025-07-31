@@ -39,11 +39,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            tree-sitter-systemverilog
+            /tmp/tree-sitter-systemverilog
             .git/modules/tree-sitter-systemverilog
-            tree-sitter-systemverilog/build
-            tree-sitter-systemverilog/systemverilog.so
-          key: ${{ runner.os }}-tree-sitter-systemverilog-${{ hashFiles('tree-sitter-systemverilog/**') }}
+            /tmp/tree-sitter-systemverilog/build
+            /tmp/tree-sitter-systemverilog/systemverilog.so
+          key: ${{ runner.os }}-tree-sitter-systemverilog-${{ hashFiles('/tmp/tree-sitter-systemverilog/**') }}
           restore-keys: |
             ${{ runner.os }}-tree-sitter-systemverilog-
 
@@ -76,11 +76,11 @@ jobs:
         # working-directory: $HOME/tree-sitter-systemverilog
         working-directory: /tmp/tree-sitter-systemverilog
         #run: tree-sitter test
-        run:  tree-sitter generate -b --abi 14 --libdir .
-        # run: |
-        #   if [ ! -f systemverilog.so ]; then
-        #     tree-sitter generate -b --abi 14 --libdir .
-        #   fi
+        # run:  tree-sitter generate -b --abi 14 --libdir .
+        run: |
+          if [ ! -f systemverilog.so ]; then
+            tree-sitter generate -b --abi 14 --libdir .
+          fi
 
       - name: ls
         working-directory: tree-sitter-systemverilog
