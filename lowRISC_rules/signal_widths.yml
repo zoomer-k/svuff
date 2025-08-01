@@ -5,16 +5,19 @@ severity:  error
 language: systemverilog
 rule:
   kind: integral_number
-  has:
-    kind: decimal_number
-    not:
+  not:
+    has:
+      kind: decimal_number
       any:
         - has:
             field: size
+            kind: unsigned_number
             stopBy: end
         - has:
             field: base
+            kind: decimal_base
             stopBy: end
+
 
 
 note: |
