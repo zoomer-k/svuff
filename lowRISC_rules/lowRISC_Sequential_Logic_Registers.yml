@@ -1,0 +1,14 @@
+# "lowRISC Style Guides" by lowRISC Contributors is licensed under CC BY 4.0. This work has been modified.
+id: lowRISC_Sequential_Logic_Registers
+message: In a sequential always block, only use non-blocking assignments (<=). Never use blocking assignments (=).
+severity:  error
+language: systemverilog
+rule:
+     kind: procedural_timing_control_statement
+     not:
+       has:
+        kind: seq_block
+        stopBy: end
+note: |
+  Designs that mix blocking and non-blocking assignments for registers simulate incorrectly because some simulators process some of the blocking assignments in an always block as occurring in a separate simulation event as the non-blocking assignment. 
+  This process makes some signals jump registers, potentially leading to total protonic reversal. That's bad.
