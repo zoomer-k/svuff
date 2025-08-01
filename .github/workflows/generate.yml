@@ -33,14 +33,15 @@ jobs:
 
       - name: submodule
         #run: git submodule --depth=1 add https://github.com/gmlarumbe/tree-sitter-systemverilog
-        run: git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog /tmp/tree-sitter-systemverilog
+        run: |
+          if [ ! -d tmp/tree-sitter-systemverilog ]; then
+          git clone --depth=1 https://github.com/gmlarumbe/tree-sitter-systemverilog /tmp/tree-sitter-systemverilog
+          fi
          
       - name: Cache tree-sitter-systemverilog
         uses: actions/cache@v4
         with:
           path: |
-            /tmp/tree-sitter-systemverilog
-            .git/modules/tree-sitter-systemverilog
             /tmp/tree-sitter-systemverilog/build
             /tmp/tree-sitter-systemverilog/systemverilog.so
           key: ${{ runner.os }}-tree-sitter-systemverilog-${{ hashFiles('/tmp/tree-sitter-systemverilog/**') }}
@@ -79,7 +80,7 @@ jobs:
         #run: tree-sitter test
         # run:  tree-sitter generate -b --abi 14 --libdir .
         run: |
-          if [ ! -f /tmp/tree-sitter-systemverilog/systemverilog.so ]; then
+          if [ ! -f systemverilog.so ]; then
             tree-sitter generate -b --abi 14 --libdir .
           fi
 
