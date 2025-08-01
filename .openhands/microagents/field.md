@@ -28,13 +28,35 @@ triggers:
 
 - **例**（正しい使い方）:
   ```yaml
-  kind: function_declaration
-  field:
-    name:
-      kind: identifier
-      pattern: "main"
+  kind: integral_number
+    not:
+      any:
+        - has: # Checks for explicit size, e.g., '4' in 4'd4
+            all:
+              - kind: decimal_number
+              - has:
+                  field: size
+                  kind: unsigned_number
+                  stopBy: end
+            stopBy: end
+        - has: # Checks for explicit base, e.g., 'd' in 4'd4
+            all:
+              - kind: decimal_number
+              - has:
+                  field: base
+                  any:
+                    - kind: decimal_base
+                    - kind: hex_base
+                    - kind: binary_base
+                    - kind: octal_base
+                  stopBy: end
+            stopBy: end
+        - inside:
+            kind: packed_dimension
+            stopBy: end
+
   ```
-  → `function_declaration` の `name` フィールドが `identifier` で、名前が `"main"` の関数を探す。
+
 
 ---
 
