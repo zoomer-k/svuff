@@ -3,16 +3,29 @@ id: lowRISC_signal_widths
 message: Always be explicit about the widths of number literals.
 severity:  error
 language: systemverilog
+# rule:
+#   kind: integral_number
+#   not:
+#     any:
+#       - has:
+#           field: size
+#           stopBy: end
+#       - has:
+#           field: base
+#           stopBy: end
+
 rule:
   kind: integral_number
-  not:
-    any:
-      - has:
-          field: size
-          stopBy: end
-      - has:
-          field: base
-          stopBy: end
+  has:
+    kind: decimal_number
+    not:
+      any:
+        - has:
+            field: size
+            stopBy: end
+        - has:
+            field: base
+            stopBy: end
 
 
 
