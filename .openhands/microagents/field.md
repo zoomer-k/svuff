@@ -5,70 +5,47 @@ triggers:
 
 ---
 
-# Tree-sitterとast-grepにおける`field`の比較と活用
 
-## 🧠 Tree-sitterにおける`field`
+## 🧩 Tree-sitter における `field`
 
-### 定義
-- Tree-sitterでは、構文木のノードに**意味的なラベル**を付けるために`field`を使用。
-- 文法定義ファイル（`grammar.js`）で、構文要素に名前を付ける。
-
-### 例
-
-```js
-function_declaration: seq(
-  'function',
-  field('name', $.identifier),
-  field('parameters', $.parameter_list),
-  field('body', $.block)
-)
-```
-
-この例では、関数名、引数、関数本体にそれぞれ`name`、`parameters`、`body`というフィールド名が付けられています。
+- **意味**: 構文木（AST）のノードにおける「構造的な役割」や「位置」を示すラベル。
+- **用途**: ノードの子要素に名前を付けてアクセスしやすくする。
+- **例**: `function_declaration` ノードの中に `name` や `parameters` などの `field` がある。
+- **特徴**:
+  - `field` は構文木の定義（grammar）に基づいて決まる。
+  - 単体で意味を持ち、構文解析時に自動的に付与される。
 
 ---
 
-## 🔍 ast-grepにおける`field`（**relational ruleの一部**）
+## 🔍 ast-grep における `field`
 
-### 定義
-- `ast-grep`では、**親ノードとその子ノードの関係性**を定義するために`field`を使用。
-- 特定のフィールドにマッチする子ノードを指定することで、構文木の**構造的な条件**を記述できる。
+- **意味**: 検索対象のノードの中で、特定の子ノードに対して条件を指定するための「構造的な位置指定」。
+- **用途**: 検索ルールの中で、特定の構造にマッチさせるために使う。
+- **特徴**:
+  - `field` は **構造的な位置指定**であり、**中身の条件がなければ意味を持たない**。
+  - `field` の中には、必ず `kind`, `pattern`, `regex` などの **positive matcher** を含める必要がある。
+  - `field` のみでは matcher として不完全 → `Rule must have one positive matcher` エラーになる。
 
-### 使い方（例）
-
-```yaml
-rule:
+- **例**（正しい使い方）:
+  ```yaml
   kind: function_declaration
   field:
     name:
-      regex: '^get.*'
-```
-
-この例では、`function_declaration`ノードの`name`フィールドにある識別子が `"get"` で始まる関数だけにマッチします。
-
-### 主な用途
-- **構造的な検索**：親ノードの中の特定のフィールドに対して条件を課す。
-- **柔軟なルール定義**：フィールドごとに異なるマッチ条件を設定可能。
-- **再利用性の高いルール**：複雑な構文構造にも対応できる。
-
----
-
-## 🧩 両者の関係性と違い
-
-| 項目 | Tree-sitter | ast-grep |
-|------|-------------|----------|
-| `field`の役割 | 構文木ノードに名前を付ける | 特定のフィールドに対するマッチ条件を定義 |
-| 定義場所 | `grammar.js` | ルールファイル（YAML/JSON） |
-| 主な目的 | 構文木の意味付け | 構文木の構造的な検索 |
-| 依存関係 | 独立して定義 | Tree-sitterのフィールド定義に依存 |
+      kind: identifier
+      pattern: "main"
+  ```
+  → `function_declaration` の `name` フィールドが `identifier` で、名前が `"main"` の関数を探す。
 
 ---
 
 ## ✅ まとめ
 
-- **Tree-sitter**の`field`は構文木の**意味的な構造**を定義するためのもの。
-- **ast-grep**の`field`は、その構造を活用して**構文的に正確な検索条件**を記述するためのもの。
-- 両者を組み合わせることで、**高精度なコード解析・リファクタリングルール**を構築可能。
+| 項目 | Tree-sitter | ast-grep |
+|------|-------------|----------|
+| `field` の意味 | 構文木の子ノードのラベル | 構造的な位置指定 |
+| 単体で意味を持つか | 持つ | 持たない（中身の条件が必要） |
+| 使用時の注意点 | grammar に従って自動付与 | `kind` などの positive matcher が必須 |
+| エラー例 | なし | `Rule must have one positive matcher` |
 
 ---
 
