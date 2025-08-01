@@ -4,7 +4,18 @@ message: Always be explicit about the widths of number literals.
 severity:  error
 language: systemverilog
 rule:
-     kind: integral_number
+  kind: integral_number
+  not:
+    has:
+      kind: decimal_number
+      any:
+        - has:
+            field: size
+            stopBy: end
+        - has:
+            field: base
+            stopBy: end
+
 note: |
   Exceptions:
   When using parameterized widths, it is acceptable to simply use 1'b1 (e.g. when incrementing) rather than contrivances such as {{(Bus_width-1){1'b0}}, 1'b1}. Alternately it could be written as Bus_width'(1).
