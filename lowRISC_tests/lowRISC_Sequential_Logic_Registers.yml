@@ -1,0 +1,27 @@
+id: lowRISC_Sequential_Logic_Registers
+
+valid: 
+  - |
+    logic foo_en;
+    logic [7:0] foo_q, foo_d;
+    
+    always_ff @(posedge clk or negedge rst_ni) begin
+      if (!rst_ni) begin
+        foo_q <= 8'hab;
+      end else if (foo_en) begin
+        foo_q <= foo_d;
+      end
+    end
+
+invalid: 
+  - |
+    logic foo_en;
+    logic [7:0] foo_q, foo_d;
+    
+    always_ff @(posedge clk or negedge rst_ni) begin
+      if (!rst_ni) begin
+        foo_q = 8'hab;
+      end else if (foo_en) begin
+        foo_q = foo_d;
+      end
+    end
