@@ -6,17 +6,13 @@ language: systemverilog
 rule:
   kind: integral_number
   not:
-    has:
-      kind: decimal_number
-      any:
-        - has:
-            field: size
-            kind: unsigned_number
-            stopBy: end
-        - has:
-            field: base
-            kind: decimal_base
-            stopBy: end
+    any:
+      - has:
+          field: size
+          stopBy: end
+      - has:
+          field: base
+          stopBy: end
 
 
 
