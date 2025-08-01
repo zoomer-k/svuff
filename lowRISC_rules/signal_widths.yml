@@ -42,11 +42,28 @@ language: systemverilog
 #           stopBy: end
 
 
+# rule:
+#   kind: integral_number
+#   not:
+#     has:
+#       kind: decimal_number
+#       any:
+#         - has:
+#             field: size
+#             kind: unsigned_number
+#             stopBy: end
+#         - has:
+#             field: base
+#             kind: decimal_base
+#             stopBy: end
+
+
+
 rule:
   kind: integral_number
-  not:
-    has:
-      kind: decimal_number
+  has:
+    kind: decimal_number
+    not:
       any:
         - has:
             field: size
@@ -56,6 +73,7 @@ rule:
             field: base
             kind: decimal_base
             stopBy: end
+
 
 
 
