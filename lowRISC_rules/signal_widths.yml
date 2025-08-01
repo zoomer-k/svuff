@@ -5,9 +5,9 @@ severity:  error
 language: systemverilog
 rule:
   kind: integral_number
-  not:
-    has:
-      kind: decimal_number
+  has:
+    kind: decimal_number
+    not:
       any:
         - has:
             field: size
@@ -15,6 +15,7 @@ rule:
         - has:
             field: base
             stopBy: end
+
 
 note: |
   Exceptions:
