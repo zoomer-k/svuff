@@ -4,11 +4,16 @@ message: In a sequential always block, only use non-blocking assignments (<=). N
 severity:  error
 language: systemverilog
 rule:
-     kind: procedural_timing_control_statement
-     not:
+     kind: blocking_assignment
+     inside:
+       kind: always_construct
        has:
-        kind: seq_block
-        stopBy: end
+         kind: always_keyword
+         has:
+           pattern: always_ff
+           stopBy: end
+         stopBy: end
+       stopBy: end
 note: |
   Designs that mix blocking and non-blocking assignments for registers simulate incorrectly because some simulators process some of the blocking assignments in an always block as occurring in a separate simulation event as the non-blocking assignment. 
   This process makes some signals jump registers, potentially leading to total protonic reversal. That's bad.
