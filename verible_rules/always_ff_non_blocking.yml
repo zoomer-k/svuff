@@ -15,6 +15,13 @@ language: systemverilog
 
 rule:
   kind: blocking_assignment
+  inside:
+    kind: always_construct
+    stopBy: end
+    has:
+      kind: always_keyword
+      regex: "always_ff"
+      stopBy: end
 
 
 
