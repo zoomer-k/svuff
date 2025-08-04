@@ -1,0 +1,23 @@
+id: verible_always-ff-non-blocking
+
+valid: 
+  - |
+    module always_ff_non_blocking;
+      always_ff @(posedge c) begin
+        a <= b; // [Style: sequential-logic] [always-ff-non-blocking]
+      end
+    endmodule
+  - |
+    module always_comb_blocking;
+      always_comb begin
+        a = b; // [Style: combinational-logic] [always-comb-blocking]
+      end
+    endmodule
+
+invalid: 
+  - |
+    module always_ff_non_blocking;
+      always_ff @(posedge c) begin
+        a = b; // [Style: sequential-logic] [always-ff-non-blocking]
+      end
+    endmodule
