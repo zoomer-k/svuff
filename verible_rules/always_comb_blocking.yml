@@ -14,7 +14,14 @@ severity:  error
 language: systemverilog
 
 rule:
-  kind: nonblocking_assignment
+  all:
+    - kind: nonblocking_assignment
+    - inside:
+        kind: always_construct
+        has:
+          kind: always_keyword
+          regex: ^always_comb$
+        stopBy: end
 
 
 
