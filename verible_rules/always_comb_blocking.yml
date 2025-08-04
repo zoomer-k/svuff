@@ -21,7 +21,6 @@ rule:
         has:
           kind: always_keyword
           regex: ^always_comb$
-          stopBy: end
         stopBy: end
 
 
