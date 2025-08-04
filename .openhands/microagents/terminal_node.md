@@ -59,6 +59,7 @@ always_ff @(posedge clk) q <= d;
 `ast-grep` では、`always_ff` を直接 `kind` で指定することはできません。代わりに、以下のように `kind` と `regex` を使って `"always_ff"` を検出できます：
 
 ```yaml
-- kind: always_construct
-- regex: "always_ff"
+rules:
+  kind: always_construct
+  regex: "always_ff"
 ```
