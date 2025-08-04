@@ -14,15 +14,7 @@ severity:  error
 language: systemverilog
 
 rule:
-  all:
-    - kind: always_construct
-    - has: # Check if the always_construct contains the always_comb keyword
-        kind: always_keyword
-        pattern: always_comb
-        stopBy: end
-    - has: # Check if the always_construct contains a nonblocking_assignment
-        kind: nonblocking_assignment
-        stopBy: end
+  kind: always_construct
 
 
 
