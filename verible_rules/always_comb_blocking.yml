@@ -14,7 +14,7 @@ severity:  error
 language: systemverilog
 
 rule:
-  kind: always_construct
+  kind: nonblocking_assignment
 
 
 
