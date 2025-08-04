@@ -12,6 +12,7 @@ systemverilog linter from many guidelines
 ## guidelines list
 
 - LowRISC https://github.com/lowRISC/style-guides/blob/master/VerilogCodingStyle.md
+- verible https://chipsalliance.github.io/verible/verilog_lint.html
 
 
 
