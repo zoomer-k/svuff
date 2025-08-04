@@ -1,0 +1,17 @@
+id: verible_always-comb
+
+valid: 
+  - |
+    module always_comb_module;
+      always_comb begin
+        a = b + c;
+      end
+    endmodule
+
+invalid: 
+  - |
+    module always_comb_module;
+      always @* begin
+        a = b + c;
+      end
+    endmodule
