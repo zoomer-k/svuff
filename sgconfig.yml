@@ -1,9 +1,11 @@
 ruleDirs: 
   -  dev_rules
   -  lowRISC_rules
+  -  verible_rules
 testConfigs:
   -  testDir: dev_tests
   -  testDir: lowRISC_tests
+  -  testDir: verible_tests
 customLanguages:
   systemverilog:
     libraryPath: /tmp/tree-sitter-systemverilog/systemverilog.so
