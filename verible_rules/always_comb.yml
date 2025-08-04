@@ -14,7 +14,13 @@ severity:  error
 language: systemverilog
 
 rule:
-  kind: integral_number
+  kind: always_construct
+  has:
+    kind: procedural_timing_control_statement
+    stopBy: end
+    has:
+      pattern: '@*'
+      stopBy: end
 
 
 
