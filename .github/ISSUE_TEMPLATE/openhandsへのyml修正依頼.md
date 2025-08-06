@@ -1,7 +1,7 @@
 ---
 name: openhandsへのyml修正依頼
-about: "****.ymlの修正する。"
-title: ''
+about: ruleの****.ymlの修正する。
+title: "****.ymlの修正する。"
 labels: fix-me
 assignees: ''
 
