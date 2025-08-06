@@ -14,7 +14,14 @@ severity:  error
 language: systemverilog
 
 rule:
-  kind: always_construct
+  kind: case_statement
+  not:
+    has:
+      kind: case_item
+      has:
+        pattern: default
+        stopBy: end
+      stopBy: end
 
 
 
