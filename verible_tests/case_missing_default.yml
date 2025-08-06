@@ -8,6 +8,18 @@ valid:
         default: return 1;
       endcase
     endfunction
+  - |
+     function automatic int foo (input in);
+       unique case (in)
+         1: return 0;
+       endcase
+     endfunction
+  - |
+     function automatic int foo (input in);
+       unique0 case (in)
+         1: return 0;
+       endcase
+     endfunction
 
 invalid: 
   - |
