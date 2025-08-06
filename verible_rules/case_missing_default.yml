@@ -15,13 +15,18 @@ language: systemverilog
 
 rule:
   kind: case_statement
-  not:
-    has:
-      kind: case_item
-      has:
-        pattern: default
-        stopBy: end
-      stopBy: end
+  all:
+    - not:
+        has:
+          kind: case_item
+          has:
+            pattern: default
+            stopBy: end
+          stopBy: end
+    - not:
+        has:
+          kind: unique_priority
+          stopBy: end
 
 
 
