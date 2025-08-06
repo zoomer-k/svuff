@@ -1,0 +1,25 @@
+# Portions Copyright 2023 CHIPS Alliance
+# Licensed under the Apache License, Version 2.0 (the "License");
+# You may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Additional modifications Copyright 2025 zoomer-k
+# Licensed under the MIT License
+
+id: verible_case-missing-default
+message: Checks that a default case-item is always defined unless the case statement has the unique qualifier.
+severity:  error
+language: systemverilog
+
+rule:
+  kind: always_construct
+
+
+
+
+
+
+# note: |
+    
