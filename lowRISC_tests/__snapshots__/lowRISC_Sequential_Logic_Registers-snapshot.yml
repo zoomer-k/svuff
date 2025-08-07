@@ -1,0 +1,37 @@
+id: lowRISC_Sequential_Logic_Registers
+snapshots:
+  ? |
+    logic foo_en;
+    logic [7:0] foo_q, foo_d;
+
+    always_ff @(posedge clk or negedge rst_ni) begin
+      if (!rst_ni) begin
+        foo_q = 8'hab;
+      end else if (foo_en) begin
+        foo_q = foo_d;
+      end
+    end
+  : labels:
+    - source: foo_q = 8'hab
+      style: primary
+      start: 115
+      end: 128
+    - source: always_ff
+      style: secondary
+      start: 41
+      end: 50
+    - source: always_ff
+      style: secondary
+      start: 41
+      end: 50
+    - source: |-
+        always_ff @(posedge clk or negedge rst_ni) begin
+          if (!rst_ni) begin
+            foo_q = 8'hab;
+          end else if (foo_en) begin
+            foo_q = foo_d;
+          end
+        end
+      style: secondary
+      start: 41
+      end: 187

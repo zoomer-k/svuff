@@ -1,6 +1,6 @@
 # "lowRISC Style Guides" by lowRISC Contributors is licensed under CC BY 4.0. This work has been modified.
 id: lowRISC_Sequential_Logic_Registers
-message: In a sequential always block, only use non-blocking assignments (<=). Never use blocking assignments (=).
+message: Inside an `always_ff` block, only non-blocking assignments (<=) are permitted. Blocking assignments (=) are forbidden.
 severity:  error
 language: systemverilog
 rule:

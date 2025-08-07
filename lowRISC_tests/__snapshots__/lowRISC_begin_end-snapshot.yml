@@ -1,0 +1,12 @@
+id: lowRISC_begin_end
+snapshots:
+  ? |
+    always_ff @(posedge clk)
+    q <= d;
+  : labels:
+    - source: |-
+        @(posedge clk)
+        q <= d;
+      style: primary
+      start: 10
+      end: 32

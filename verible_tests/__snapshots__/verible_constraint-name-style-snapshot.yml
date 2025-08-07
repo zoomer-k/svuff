@@ -1,0 +1,17 @@
+id: verible_constraint-name-style
+snapshots:
+  ? |
+    class constraints_check;
+      logic max;
+      // This line should trigger the constraint naming convention rule check
+      constraint MyMax {  max >= 64; }
+    endclass
+  : labels:
+    - source: MyMax
+      style: primary
+      start: 125
+      end: 130
+    - source: constraint
+      style: secondary
+      start: 114
+      end: 124

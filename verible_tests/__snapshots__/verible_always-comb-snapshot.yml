@@ -1,0 +1,77 @@
+id: verible_always-comb
+snapshots:
+  ? |
+    module always_comb_module;
+      always @ ( * )  begin
+        a = b + c;
+      end
+    endmodule
+  : labels:
+    - source: |-
+        always @ ( * )  begin
+            a = b + c;
+          end
+      style: primary
+      start: 29
+      end: 71
+    - source: '@ ( * )'
+      style: secondary
+      start: 36
+      end: 43
+    - source: |-
+        @ ( * )  begin
+            a = b + c;
+          end
+      style: secondary
+      start: 36
+      end: 71
+  ? |
+    module always_comb_module;
+      always @(*) begin
+        a = b + c;
+      end
+    endmodule
+  : labels:
+    - source: |-
+        always @(*) begin
+            a = b + c;
+          end
+      style: primary
+      start: 29
+      end: 67
+    - source: '@(*)'
+      style: secondary
+      start: 36
+      end: 40
+    - source: |-
+        @(*) begin
+            a = b + c;
+          end
+      style: secondary
+      start: 36
+      end: 67
+  ? |
+    module always_comb_module;
+      always @* begin
+        a = b + c;
+      end
+    endmodule
+  : labels:
+    - source: |-
+        always @* begin
+            a = b + c;
+          end
+      style: primary
+      start: 29
+      end: 65
+    - source: '@*'
+      style: secondary
+      start: 36
+      end: 38
+    - source: |-
+        @* begin
+            a = b + c;
+          end
+      style: secondary
+      start: 36
+      end: 65

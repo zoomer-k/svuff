@@ -1,0 +1,16 @@
+id: verible_case-missing-default
+snapshots:
+  ? |
+    function automatic int foo (input bit in);
+      case (in)
+        1: return 0;
+      endcase
+    endfunction
+  : labels:
+    - source: |-
+        case (in)
+            1: return 0;
+          endcase
+      style: primary
+      start: 45
+      end: 81

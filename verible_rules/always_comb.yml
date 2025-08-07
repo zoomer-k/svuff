@@ -27,6 +27,9 @@ rule:
 
 
 
-# note: |
+note: |
+  The 'always_comb' construct was introduced in SystemVerilog to explicitly define combinational logic blocks.
+  It is functionally equivalent to 'always @*', but it provides better intent clarity and helps prevent common mistakes.
+  Using 'always_comb' automatically includes all inputs in the sensitivity list, ensuring that combinational logic is always evaluated correctly without manual intervention.
     
   

@@ -4,6 +4,10 @@ message: Check that constraint names follow the required name style specified by
 severity: error
 language: systemverilog
 rule:
-  kind: simple_identifier
+  all:
+    - kind: simple_identifier
+    - follows:
+        pattern: constraint
+        stopBy: end
   not:
     regex: "^([a-z0-9]+_)+c$"
