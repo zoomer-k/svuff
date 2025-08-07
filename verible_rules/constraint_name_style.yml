@@ -5,9 +5,8 @@ severity: error
 language: systemverilog
 rule:
   kind: constraint_declaration
-  has:
-    field: name
-    all:
-      - kind: simple_identifier
-      - not:
-          regex: "^([a-z0-9]+_)+c$"
+  all:
+    - pattern: "constraint $NAME { $$$BODY }"
+    - not:
+        pattern: "$NAME"
+        regex: "^([a-z0-9]+_)+c$"
