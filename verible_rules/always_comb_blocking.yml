@@ -28,4 +28,8 @@ rule:
 
 
 
-# note: |
+note: |
+  Combinational logic blocks (e.g., those defined with 'always_comb') describe logic whose outputs respond immediately to changes in inputs.
+  Non-blocking assignments ('<=') introduce a delay, scheduling the assignment to happen at the end of the current time step.
+  Using non-blocking assignments in 'always_comb' can lead to simulation mismatches between combinational logic and synthesized hardware, making debugging difficult and introducing subtle bugs.
+  Always use blocking assignments ('=') for combinational logic.

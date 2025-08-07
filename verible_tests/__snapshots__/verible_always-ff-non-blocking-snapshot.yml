@@ -1,0 +1,24 @@
+id: verible_always-ff-non-blocking
+snapshots:
+  ? |
+    module always_ff_non_blocking;
+      always_ff @(posedge c) begin
+        a = b; // [Style: sequential-logic] [always-ff-non-blocking]
+      end
+    endmodule
+  : labels:
+    - source: a = b
+      style: primary
+      start: 66
+      end: 71
+    - source: always_ff
+      style: secondary
+      start: 33
+      end: 42
+    - source: |-
+        always_ff @(posedge c) begin
+            a = b; // [Style: sequential-logic] [always-ff-non-blocking]
+          end
+      style: secondary
+      start: 33
+      end: 132

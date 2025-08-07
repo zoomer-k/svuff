@@ -1,0 +1,10 @@
+id: lowRISC_signal_widths
+snapshots:
+  ? |
+    localparam logic [3:0] bar = 4;
+    assign foo = 2;
+  : labels:
+    - source: '4'
+      style: primary
+      start: 29
+      end: 30

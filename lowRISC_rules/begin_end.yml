@@ -1,6 +1,6 @@
 # "lowRISC Style Guides" by lowRISC Contributors is licensed under CC BY 4.0. This work has been modified.
 id: lowRISC_begin_end
-message: Use begin and end unless the whole statement fits on a single line.
+message: All procedural timing control statements must be enclosed in a begin...end block.
 severity:  error
 language: systemverilog
 rule:

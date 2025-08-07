@@ -1,0 +1,24 @@
+id: verible_always-comb-blocking
+snapshots:
+  ? |
+    module always_comb_blocking;
+      always_comb begin
+        a <= b; // [Style: combinational-logic] [always-comb-blocking]
+      end
+    endmodule
+  : labels:
+    - source: a <= b
+      style: primary
+      start: 53
+      end: 59
+    - source: always_comb
+      style: secondary
+      start: 31
+      end: 42
+    - source: |-
+        always_comb begin
+            a <= b; // [Style: combinational-logic] [always-comb-blocking]
+          end
+      style: secondary
+      start: 31
+      end: 121
