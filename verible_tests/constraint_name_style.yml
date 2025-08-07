@@ -1,0 +1,17 @@
+id: verible_constraint-name-style
+
+valid: 
+  - |
+    class constraints_check;
+      logic max;
+      // This line should trigger the constraint naming convention rule check
+      constraint mymax_c {  max >= 64; }
+    endclass
+
+invalid: 
+  - |
+    class constraints_check;
+      logic max;
+      // This line should trigger the constraint naming convention rule check
+      constraint MyMax {  max >= 64; }
+    endclass
