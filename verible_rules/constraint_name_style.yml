@@ -1,0 +1,13 @@
+
+id: verible_constraint-name-style
+message: Check that constraint names follow the required name style specified by a regular expression.
+severity: error
+language: systemverilog
+rule:
+  kind: constraint_declaration
+  has:
+    field: name
+    all:
+      - kind: simple_identifier
+      - not:
+          regex: "^([a-z0-9]+_)+c$"
