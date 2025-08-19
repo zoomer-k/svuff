@@ -1,0 +1,21 @@
+id: verible_enum-name-style
+
+valid: 
+  - | #style_regex Default: [a-z_0-9]+(_t|_e) A regex used to check enum type name style.
+    // Enum names should be lower_snake_case and end with '_t' or '_e'
+    typedef enum {
+        Idle, Busy
+    } camel_enum_t;
+
+  - |
+    // Enum names should be lower_snake_case and end with '_t' or '_e'
+    typedef enum {
+        Idle, Busy
+    } camel_enum_e;
+
+invalid: 
+  - |
+    // Enum names should be lower_snake_case and end with '_t' or '_e'
+    typedef enum {
+        Idle, Busy
+    } camelEnum;
