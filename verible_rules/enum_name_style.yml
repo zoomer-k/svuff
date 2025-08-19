@@ -14,7 +14,10 @@ severity:  error
 language: systemverilog
 
 rule:
-  kind: always_construct
+  kind: type_declaration
+  has:
+    kind: enum
+    stopBy: end
 
 note: |
       The default regex pattern expects “lower_snake_case” with either a “_t” or “_e” suffix. 
