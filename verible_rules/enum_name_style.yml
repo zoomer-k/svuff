@@ -1,0 +1,22 @@
+# Portions Copyright 2023 CHIPS Alliance
+# Licensed under the Apache License, Version 2.0 (the "License");
+# You may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Additional modifications Copyright 2025 zoomer-k
+# Licensed under the MIT License
+
+id: verible_enum-name-style
+message: Checks that enum type names follow a naming convention defined by a RE2 regular expression.
+severity:  error
+language: systemverilog
+
+rule:
+  kind: always_construct
+
+note: |
+      The default regex pattern expects “lower_snake_case” with either a “_t” or “_e” suffix. 
+      Refer to https://github.com/chipsalliance/verible/tree/master/verilog/tools/lint#readme for more detail on verible regex patterns. 
+      See [Style: enumerations].
