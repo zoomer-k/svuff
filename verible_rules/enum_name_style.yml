@@ -14,13 +14,20 @@ severity:  error
 language: systemverilog
 
 rule:
-  kind: type_declaration
-  not:
-    has:
-      field: type_name
-      kind: simple_identifier
-      regex: '^[a-z_0-9]+(_t|_e)$'
-      stopBy: end
+  all:
+    - kind: type_declaration
+    - has:
+        inside:
+          kind: data_type
+          regex: '\benum\b'
+          stopBy: end
+        stopBy: end
+    - not:
+        has:
+          field: type_name
+          kind: simple_identifier
+          regex: '^[a-z_0-9]+(_t|_e)$'
+          stopBy: end
 
 note: |
       The default regex pattern expects “lower_snake_case” with either a “_t” or “_e” suffix. 
