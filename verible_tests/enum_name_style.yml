@@ -13,6 +13,20 @@ valid:
         Idle, Busy
     } camel_enum_e;
 
+
+  - |
+    typedef struct packed { 
+      logic [31:0] addr; 
+      logic [7:0] data; 
+      logic valid; 
+      } MemoryRequest;
+
+  - |
+    typedef union packed {
+    logic [31:0] word;
+    logic [7:0]  bytes[4];
+    } DataUnion;  
+
 invalid: 
   - |
     // Enum names should be lower_snake_case and end with '_t' or '_e'
